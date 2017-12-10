@@ -1,34 +1,61 @@
-export default function() {
-  const canvas = document.getElementById('snow');
-  const canvasContext = canvas.getContext('2d');
-  let canvasWidth = canvasContext.canvas.width = canvas.offsetWidth;
-  let canvasHeight = canvasContext.canvas.height = canvas.offsetHeight;
-  const animationFrame = window.requestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.msRequestAnimationFrame;
-  let snowflakes = [];
+import {Snowflake} from './snow/Snowflake';
+
+let canvas         = null;
+let canvasContext  = null;
+let canvasWidth    = null;
+let canvasHeight   = null;
+let animationFrame = null;
+let snowflakes     = [];
+
+export default function (numberOfSnowflakes = 300) {
+	initCanvas();
+	createSnowflakes(numberOfSnowflakes);
+	animateSnowflakes();
 }
 
-window.onresize = function() {
-  canvasWidth = canvasContext.canvas.width = canvas.offsetWidth;
-  canvasHeight = canvasContext.canvas.height = canvas.offsetHeight;
+function initCanvas() {
+	canvas        = document.getElementById('snow');
+	canvasContext = canvas.getContext('2d');
+	canvasWidth   = canvasContext.canvas.width = canvas.offsetWidth;
+	canvasHeight = canvasContext.canvas.height = canvas.offsetHeight;
+	animationFrame = window.requestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.msRequestAnimationFrame;
+}
 
-  for (var i = 0; i < snowflakes.length; i++) {
-    // resize each snowflake
-  }
+function createSnowflakes(numberOfSnowflakes) {
+	for (let i = 0; i < numberOfSnowflakes; i++) {
+		snowflakes.push(new Snowflake(canvasWidth, canvasHeight, canvasContext));
+	}
 }
 
 function draw() {
-  // draw the snowflakes
+	// draw the snowflakes
+	canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
+	for (let snowflake of snowflakes) {
+		snowflake.draw();
+	}
 }
 
 function update() {
- // update the position of each snowflake 
+	// update the position of each snowflake
+	for (let snowflake of snowflakes) {
+		snowflake.update();
+	}
 }
 
-function animateSnow() {
-  draw(); 
-  update();
-  animationFrame(animateSnow);
+function animateSnowflakes() {
+	draw();
+	update();
+	animationFrame(animateSnowflakes);
 }
+
+window.onresize = function () {
+	canvasWidth = canvasContext.canvas.width = canvas.offsetWidth;
+	canvasHeight = canvasContext.canvas.height = canvas.offsetHeight;
+
+	for (var i = 0; i < snowflakes.length; i++) {
+		// resize each snowflake
+	}
+};
