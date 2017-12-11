@@ -6,9 +6,17 @@ exports.files = {
       'app.js': /^app/
     }
   },
-  stylesheets: {joinTo: 'app.css'}
+  stylesheets: {
+  	joinTo: {
+		  'app.css': /^app/,
+		  'vendor.css': /^node_modules/
+	  }
+  }
 };
 
 exports.plugins = {
-  babel: {presets: ['latest']}
+  babel: {presets: ['latest']},
+	sass: {options: {includePaths: [
+		'node_modules/'
+	]}}
 };

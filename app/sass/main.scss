@@ -1,5 +1,5 @@
 body {
-  background-color: red;
+  background-color: darken(#83AF9B, 45%);;
 }
 
 .raffle {
@@ -13,3 +13,20 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.present {
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.present-top, .present-bottom {
+  position: absolute;
+
+  img {
+    width: 400px;
+  }
+}
+
