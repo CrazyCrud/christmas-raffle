@@ -1,2 +1,2 @@
-import {generateNumber} from './number/generateNumber';
-import {state} from './number/state';
+import {generateNumber} from './bandit/generateNumber';
+import {state} from './bandit/state';
