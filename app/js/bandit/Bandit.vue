@@ -55,9 +55,8 @@
             });
 
             EventBus.$on('present-opened', () => {
-                console.log('present opened');
                 this.isVisible = true;
-                TweenMax.to(this.$refs.bandit, 4, {ease: Back.easeOut.config(1.7), top:"20%", repeat:0, onComplete: () => {
+                TweenMax.to(this.$refs.bandit, 2, {ease: Back.easeOut.config(2), top:"20%", repeat:0, onComplete: () => {
                     this.isReady = true;
                 }});
             });

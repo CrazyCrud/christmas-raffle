@@ -9,7 +9,7 @@ export const Audioplayer = {
 		slotMachine: new Howl({
 			src: ['sounds/slot-2.mp3', 'sounds/slot-2.ogg'],
 			loop: false,
-			volume: 0.5,
+			volume: 0.4,
 			autoplay: false
 		}),
 		crowd: new Howl({

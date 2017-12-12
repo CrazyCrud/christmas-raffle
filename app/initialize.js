@@ -4,10 +4,7 @@ import { EventBus } from './js/event-bus.js';
 import createSnow from 'js/snow';
 
 document.addEventListener('DOMContentLoaded', () => {
-	// do your setup here
-	// var $ = require('jquery');
 	createSnow();
-
 	const app = new Vue({
 		el: '#app',
 		render: h => h(App),
@@ -15,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			var vm = this;
 			window.addEventListener('keyup', function(event) {
 				if (event.keyCode == 32 || event.keyCode == 0) {
-					console.log("key pressed");
 					EventBus.$emit('start-spinning', this.winner);
 				}
 			});

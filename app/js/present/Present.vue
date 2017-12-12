@@ -21,7 +21,7 @@
         methods: {
             openPresent() {
                 this.isOpen = true;
-                TweenMax.to(this.$refs.presentTop, 2, {rotation: 200, transformOrigin:"right 50%", left: -20, onComplete: () => {EventBus.$emit('present-opened');}}, {rotation: 180, transformOrigin:"right 50%"});
+                TweenMax.to(this.$refs.presentTop, 4, {rotation: 200, transformOrigin:"right 50%", left: -20, ease: Elastic.easeOut.config(.75, .7), onComplete: () => {EventBus.$emit('present-opened');}}, {rotation: 180, transformOrigin:"right 50%"});
             }
         },
         mounted: function () {
