@@ -8,10 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-.raffle {
-
-}
-
 .snow {
   position: absolute;
   top: 0;
@@ -19,22 +15,6 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-}
-
-.present {
-  position: absolute;
-  width: 400px;
-  left: 40%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.present-top, .present-bottom {
-  position: absolute;
-
-  img {
-    width: 400px;
-  }
 }
 
 .footer {

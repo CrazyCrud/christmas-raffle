@@ -2,7 +2,7 @@
     <div v-bind:class="{ 'results--hidden': !isVisible,  'animated fadeInRight': isVisible }" class="results">
         <h3 class="results__headline">Die Gewinner</h3>
         <ul class="results__list">
-            <li class="results__item" v-for="winner in sharedState">{{winner}}</li>
+            <li class="results__item animated fadeIn" v-for="winner in sharedState">{{winner}}</li>
         </ul>
     </div>
 </template>

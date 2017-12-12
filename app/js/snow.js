@@ -7,7 +7,7 @@ let canvasHeight   = null;
 let animationFrame = null;
 let snowflakes     = [];
 
-export default function (numberOfSnowflakes = 100) {
+export default function (numberOfSnowflakes = 200) {
 	initCanvas();
 	createSnowflakes(numberOfSnowflakes);
 	animateSnowflakes();

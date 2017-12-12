@@ -30,7 +30,7 @@
         methods: {
             spinNumber() {
                 this.angle = 36 * this.number;
-                TweenMax.to(this.$refs.digits, 6, {
+                TweenMax.to(this.$refs.digits, 5, {
                     rotationX: (this.spins * 360) + this.angle, ease: Power1.easeInOut, repeat: 0, onComplete: () => {
                         TweenMax.to(this.$refs.digits, 0, {rotationX: this.angle});
                         EventBus.$emit('bandit-completed');
