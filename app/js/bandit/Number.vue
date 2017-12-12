@@ -1,6 +1,6 @@
 <template xmlns:v-bind="http://fake.org/fake">
     <div class="bandit__number bandit-number">
-        <div class="bandit-number__digits" v-bind:style="{ transform: 'rotateX(' + angle + 'deg)' }" ref="digits">
+        <div class="bandit-number__digits" ref="digits">
             <div class="bandit-number__digit">0</div>
             <div class="bandit-number__digit">1</div>
             <div class="bandit-number__digit">2</div>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {TweenMax} from "gsap";
+    import {EventBus} from './../event-bus.js';
 
     export default {
         name   : 'Number',
@@ -24,28 +24,27 @@
             return {
                 number: 0,
                 angle : 0,
-                spins : 50
+                spins : 5
             }
         },
         methods: {
             spinNumber() {
-                for (let i = 0; i < this.spins; i++) {
-                    this.angle = 36 * i;
-                }
                 this.angle = 36 * this.number;
+                TweenMax.to(this.$refs.digits, 6, {
+                    rotationX: (this.spins * 360) + this.angle, ease: Power1.easeInOut, repeat: 0, onComplete: () => {
+                        TweenMax.to(this.$refs.digits, 0, {rotationX: this.angle});
+                    }
+                });
             }
         },
         props  : {
-            winner: {
-                type   : [String, Number],
-                default: '0'
-            }
+            order : [Number]
         },
-        watch  : {
-            winner: function (newNumber) {
-                this.number = parseInt(this.winner);
+        mounted: function () {
+            EventBus.$on('new-winner', (winner) => {
+                this.number = parseInt(winner.charAt(this.order - 1));
                 this.spinNumber();
-            }
+            });
         }
     }
 </script>
@@ -57,21 +56,23 @@
         float: left;
         overflow: hidden;
         transition: opacity 1000ms 500ms;
+        border: 2px solid black;
     }
 
     .bandit-number__digits {
         position: relative;
         width: 100px;
         height: 150px;
+        background: white;
         transform-origin: 50% 50% -231px;
         transform-style: preserve-3d;
-        transition: transform 2000ms cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .bandit-number__digit {
         width: 100px;
         height: 150px;
         position: absolute;
+        background: white;
         text-align: center;
         line-height: 150px;
         font-size: 150px;
