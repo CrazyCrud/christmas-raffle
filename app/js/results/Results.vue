@@ -21,13 +21,17 @@
 </script>
 <style lang="sass">
     .results {
-        width: 260px;
-        min-height: 300px;
+        width: 360px;
+        min-height: 360px;
         position: absolute;
-        right: 5%;
-        top: 5%;
-        background: pink;
+        right: -80px;
+        top: -80px;
+        border-radius: 260px;
+        background: rgba(10, 10, 10, 0.6);
         padding: 10px 20px;
+        padding-top: 80px;
+        color: white;
+        text-align: center;
     }
 
     .results__headline {
@@ -36,6 +40,8 @@
 
     .results__list {
         list-style: none;
+        padding: 0;
+        margin: 0;
         font-size: 2rem;
         font-family: 'Courgette', cursive;
      }

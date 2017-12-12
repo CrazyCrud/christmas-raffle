@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    import {Audioplayer} from './audio';
     import Bandit from './bandit/Bandit.vue';
     import Results from './results/Results.vue';
 
@@ -13,6 +14,9 @@
         components: {
             'bandit': Bandit,
             'results': Results
+        },
+        mounted: function() {
+            new Audioplayer().playBackground();
         }
     }
 </script>

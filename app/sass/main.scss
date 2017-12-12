@@ -5,6 +5,7 @@
 body {
   background-color: darken(#83AF9B, 45%);
   font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
 }
 
 .raffle {
@@ -34,5 +35,16 @@ body {
   img {
     width: 400px;
   }
+}
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 2rem;
+  font-family: 'Courgette', cursive;
+  color: #FACEAE;
+  text-align: center;
+  display: block;
 }
 

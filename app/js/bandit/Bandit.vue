@@ -4,7 +4,6 @@
             <number v-for="n in digits" :key="n" v-bind:order="n">
             </number>
         </div>
-        <!--<button class="bandit__button" v-on:click="setNumber">Pick Winner</button>-->
     </div>
 </template>
 
@@ -55,6 +54,7 @@
         left: 50%;
         top: 20%;
         transform: translateX(-50%);
+        box-shadow: 2px 2px 20px black;
     }
 
     .bandit__button {
