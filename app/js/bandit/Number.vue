@@ -33,6 +33,7 @@
                 TweenMax.to(this.$refs.digits, 6, {
                     rotationX: (this.spins * 360) + this.angle, ease: Power1.easeInOut, repeat: 0, onComplete: () => {
                         TweenMax.to(this.$refs.digits, 0, {rotationX: this.angle});
+                        EventBus.$emit('bandit-completed');
                     }
                 });
             }
@@ -74,7 +75,7 @@
         position: absolute;
         background: white;
         text-align: center;
-        line-height: 150px;
+        line-height: 130px;
         font-size: 150px;
         transform-origin: 50% 50% -231px;
         backface-visibility: hidden;

@@ -1,13 +1,18 @@
 <template>
-    <bandit></bandit>
+    <div>
+        <bandit></bandit>
+        <results></results>
+    </div>
 </template>
 
 <script>
-    import Bandit from './bandit/Bandit.vue'
+    import Bandit from './bandit/Bandit.vue';
+    import Results from './results/Results.vue';
 
     export default {
         components: {
-            'bandit': Bandit
+            'bandit': Bandit,
+            'results': Results
         }
     }
 </script>

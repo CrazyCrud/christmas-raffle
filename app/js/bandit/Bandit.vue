@@ -4,12 +4,13 @@
             <number v-for="n in digits" :key="n" v-bind:order="n">
             </number>
         </div>
-        <button class="bandit__button" v-on:click="setNumber">Pick Winner</button>
+        <!--<button class="bandit__button" v-on:click="setNumber">Pick Winner</button>-->
     </div>
 </template>
 
 <script>
     import { EventBus } from './../event-bus.js';
+    import {Store} from '../store/store';
     import Number from './Number.vue';
     import {generateNumber} from './generateNumber';
 
@@ -26,10 +27,23 @@
         },
         methods   : {
             setNumber() {
-                const number = generateNumber();
+                let number;
+                do {
+                    number = generateNumber();
+                } while(Store.state.winners.includes(number));
+
                 this.winner  = String("000" + number).slice(-3);
                 EventBus.$emit('new-winner', this.winner);
             }
+        },
+        mounted: function () {
+            EventBus.$on('bandit-completed', () => {
+                Store.addValue(parseInt(this.winner));
+            });
+
+            EventBus.$on('start-spinning', () => {
+                this.setNumber();
+            });
         }
     }
 </script>
@@ -41,7 +55,6 @@
         left: 50%;
         top: 20%;
         transform: translateX(-50%);
-        font-family: 'Courgette', cursive;
     }
 
     .bandit__button {
@@ -50,5 +63,6 @@
 
     .bandit__numbers-container {
         display: flex;
+        border: 1px solid black;
     }
 </style>
