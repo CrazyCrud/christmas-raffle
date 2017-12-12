@@ -1,8 +1,8 @@
-<template>
-    <div class="results">
+<template xmlns:v-bind="http://fake.org/fake">
+    <div v-bind:class="{ 'results--hidden': !isVisible,  'animated fadeInRight': isVisible }" class="results">
         <h3 class="results__headline">Die Gewinner</h3>
         <ul class="results__list">
-            <li class="results__item" v-for="winner in sharedState.winners">{{winner}}</li>
+            <li class="results__item" v-for="winner in sharedState">{{winner}}</li>
         </ul>
     </div>
 </template>
@@ -13,10 +13,19 @@
         name   : 'Results',
         data   : function () {
             return {
-                sharedState: Store.state
+                sharedState: Store.state.winners,
+                isVisible: false
             }
         },
-        methods: {}
+        methods: {
+
+        },
+        watch: {
+            sharedState: function (newState) {
+                this.isVisible = true;
+            },
+            deep: true
+        }
     }
 </script>
 <style lang="sass">
@@ -32,6 +41,14 @@
         padding-top: 80px;
         color: white;
         text-align: center;
+    }
+
+    .results--hidden {
+        opacity: 0;
+    }
+
+    .results--visible {
+
     }
 
     .results__headline {

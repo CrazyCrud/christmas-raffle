@@ -1,14 +1,14 @@
 export class Audioplayer {
 	constructor() {
 		this.backgroundMusic = new Howl({
-			urls: ['bg-sound.mp3'],
+			src: ['sounds/bg-sound.mp3', 'sounds/bg-sound.ogg'],
 			loop: true,
-			volume: 0
+			volume: 0.5,
+			autoplay: true
 		});
 	}
 
 	playBackground() {
 		this.backgroundMusic.play();
-		this.backgroundMusic.fadeIn(0.5, 9600);
 	}
 }

@@ -9,7 +9,7 @@ exports.files = {
 	stylesheets: {
 		joinTo: {
 			'styles/app.css'   : /^app/,
-			'vendor.css': /^node_modules/
+			'styles/vendor.css': /^(node_modules|vendor)/
 		}
 	}
 };
