@@ -1,7 +1,7 @@
 export const Audioplayer = {
 	files: {
 		backgroundMusic: new Howl({
-			src: ['sounds/bg-sound.mp3', 'sounds/bg-sound.ogg'],
+			src: ['sounds/bg-sound-2.mp3', 'sounds/bg-sound-2.ogg'],
 			loop: true,
 			volume: 0.25,
 			autoplay: true
@@ -9,7 +9,7 @@ export const Audioplayer = {
 		slotMachine: new Howl({
 			src: ['sounds/slot-2.mp3', 'sounds/slot-2.ogg'],
 			loop: false,
-			volume: 0.4,
+			volume: 0.2,
 			autoplay: false
 		}),
 		crowd: new Howl({

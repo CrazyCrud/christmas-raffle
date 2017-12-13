@@ -1,7 +1,7 @@
 <template xmlns:v-bind="http://fake.org/fake" xmlns:v-on="http://fake.org/fake">
     <div class="present animated bounceInLeft" v-bind:class="{'': !isOpen}" v-on:click="openPresent">
         <div class="present-bottom">
-            <img src="img/present-bottom.svg" alt="">
+            <img src="img/present-bottom-2.svg" alt="">
         </div>
         <div class="present-top" ref="presentTop">
             <img src="img/present-top.svg" alt="">
@@ -40,6 +40,10 @@
 
     .present-top, .present-bottom {
         position: absolute;
+    }
+
+    .present-top {
+        top: 1px;
     }
 
     .present-top img, .present-bottom img {
