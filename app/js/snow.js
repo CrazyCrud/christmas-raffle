@@ -56,6 +56,7 @@ window.onresize = function () {
 	canvasHeight = canvasContext.canvas.height = canvas.offsetHeight;
 
 	for (var i = 0; i < snowflakes.length; i++) {
-		// resize each snowflake
+		snowflakes[i].setCanvasSize(canvasWidth, canvasHeight);
+		snowflakes[i].resize();
 	}
 };

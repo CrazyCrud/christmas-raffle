@@ -10,6 +10,7 @@ export class Snowflake {
 		this.radius        = randomize(0.5, 3.0);
 		this.ySpeed        = randomize(1, 3);
 		this.xSpeed        = randomize(-0.5, 3.0);
+		this.isResized     = false;
 	}
 
 	draw() {
@@ -24,8 +25,28 @@ export class Snowflake {
 		this.y += this.ySpeed;
 		this.x += this.xSpeed;
 		if (this.y > this.canvasHeight) {
-			this.y = 0 - this.radius;
-			this.x = randomize(0, this.canvasWidth);
+			if (this.isResized) {
+				this.updatePosition();
+				this.isResized = false;
+			}
+			else {
+				this.y = 0 - this.radius;
+				this.x = randomize(0, this.canvasWidth);
+			}
 		}
+	}
+
+	setCanvasSize(width, height) {
+		this.canvasWidth  = width;
+		this.canvasHeight = height;
+	}
+
+	updatePosition() {
+		this.x = randomize(0, this.canvasWidth);
+		this.y = randomize(-this.canvasHeight, 0);
+	}
+
+	resize() {
+		this.isResized = true;
 	}
 }
