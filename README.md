@@ -4,7 +4,8 @@ Christmas Raffle
 Description
 ------
 
-...insert image here
+![alt text](https://github.com/CrazyCrud/christmas-raffle/blob/master/assets/demo.PNG "Demo 1")
+
 
 Installation
 ------
