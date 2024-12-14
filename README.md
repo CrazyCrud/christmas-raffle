@@ -20,3 +20,4 @@ As of 2024:
 - nvm current, check if 9.11.2 is selected 
 - npm i -g brunch@2
 - npm install
+- ...
